@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Aplicaciones — AR Tecnology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <canvas id="matrix-canvas"></canvas>
+    <div class="splash-content">
+      <div class="logo-ring-wrap">
+        <svg class="ring-svg" viewBox="0 0 300 300">
+          <circle class="ring-bg" cx="150" cy="150" r="140"/>
+          <circle id="ring-fg" class="ring-fg" cx="150" cy="150" r="140"/>
+        </svg>
+        <div class="ring1"></div>
+        <div class="ring2"></div>
+        <img id="s-logo" src="" alt="AR Tecnology Logo">
+      </div>
+      <h1 class="splash-title">AR TECNOLOGY</h1>
+      <p class="splash-sub" id="typewriter"></p>
+      <div class="splash-line"></div>
+      <p id="splash-pct" class="splash-pct">0%</p>
+    </div>
+    <button id="skip-btn" onclick="goApp()">Saltar &rsaquo;</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+
+    <!-- OVERLAY fondo -->
+    <div id="bg-overlay"></div>
+
+    <!-- HEADER -->
+    <header id="main-header">
+      <div class="header-inner">
+        <div class="brand">
+          <img id="h-logo" src="" alt="Logo">
+          <div class="brand-text">
+            <span class="brand-title">AR TECNOLOGY</span>
+            <span class="brand-sub">Portal de Aplicaciones</span>
+          </div>
+        </div>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input id="search" type="search" placeholder="Buscar...  ( / )" autocomplete="off">
+        </div>
+        <div class="header-right">
+          <div class="counter-badge">
+            <span class="counter-dot"></span>
+            <span id="app-counter">0 apps</span>
+          </div>
+          <div id="tools-wrap">
+            <button id="tools-btn" title="Herramientas">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.594c.55 0 1.02.398 1.11.94l.213 1.28c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 010 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.542-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.93 6.93 0 010-.255c.007-.38-.137-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </button>
+            <div id="tools-menu" class="hidden">
+              <button class="tm-item" data-action="changeBg">&#128444;&#65039; Cambiar fondo</button>
+              <button class="tm-item" data-action="removeBg">&#10005; Quitar fondo</button>
+              <div class="tm-slider-wrap">
+                <span class="tm-label">Tama&#241;o del fondo</span>
+                <div class="tm-slider-row">
+                  <span>10%</span>
+                  <input type="range" id="bg-size" min="10" max="100" value="40" step="5">
+                  <span>100%</span>
+                </div>
+              </div>
+              <div class="tm-slider-wrap">
+                <span class="tm-label">Color del fondo</span>
+                <div class="tm-slider-row">
+                  <span>&#9788;</span>
+                  <input type="range" id="bg-dark" min="0" max="100" value="50" step="5">
+                  <span>&#9790;</span>
+                </div>
+              </div>
+              <div class="tm-sep"></div>
+              <button class="tm-item" data-action="exportApps">&#11015;&#65039; Exportar apps</button>
+              <button class="tm-item" data-action="importApps">&#11014;&#65039; Importar apps</button>
+              <div class="tm-sep"></div>
+              <button class="tm-item" data-action="restoreApps">&#9851;&#65039; Restaurar ejemplos</button>
+              <button class="tm-item tm-danger" data-action="clearApps">&#128465;&#65039; Limpiar todo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- FILTROS -->
+    <div id="filters-bar">
+      <div id="cat-pills" class="pills-wrap"></div>
+      <div class="sort-wrap">
+        <label for="sort-select">Orden</label>
+        <select id="sort-select">
+          <option value="recent">Recientes</option>
+          <option value="name">Nombre A-Z</option>
+          <option value="category">Categoría</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <main id="main-content">
+      <div id="loading" class="loading-wrap hidden">
+        <div class="spinner"></div>
+        <span>Cargando...</span>
+      </div>
+      <div id="grid" class="apps-grid"></div>
+      <div id="empty-state" class="empty-state hidden">
+        <p class="empty-title">Tu portal está vacío</p>
+        <p class="empty-sub">Agrega tu primera aplicación</p>
+        <button class="btn-add-empty" onclick="openModal()">+ Agregar</button>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="main-footer">
+      <span>&#169; AR Tecnology — Industrial Engineering Software</span>
+    </footer>
+  </div>
+
+  <!-- FAB -->
+  <button id="fab" class="hidden" onclick="openModal()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+    </svg>
+    <span>Agregar</span>
+  </button>
+
+  <!-- MODAL -->
+  <div id="modal-overlay" class="hidden" role="dialog" aria-modal="true">
+    <div id="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-title">AGREGAR APLICACIÓN</h2>
+        <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      </div>
+      <form id="app-form" novalidate>
+        <div class="form-group">
+          <label>Ícono</label>
+          <div class="icon-row">
+            <input id="f-icon" type="text" maxlength="4" value="🖥️" class="mi icon-input">
+            <div id="icon-picker"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-name">Nombre *</label>
+          <input id="f-name" type="text" required placeholder="Nombre de la aplicación" class="mi">
+        </div>
+        <div class="form-group">
+          <label for="f-url">Enlace *</label>
+          <input id="f-url" type="text" required placeholder="https://..." class="mi">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-cat">Categoría *</label>
+            <input id="f-cat" type="text" list="cat-list" required placeholder="Elige o escribe" class="mi">
+            <datalist id="cat-list"></datalist>
+          </div>
+          <div class="form-group">
+            <label for="f-desc">Descripción</label>
+            <input id="f-desc" type="text" placeholder="Breve descripción" class="mi">
+          </div>
+        </div>
+        <p id="form-error" class="form-error hidden"></p>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="closeModal()">Cancelar</button>
+          <button type="submit" class="btn-save">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Inputs ocultos -->
+  <input type="file" id="bg-file" accept="image/*" style="display:none">
+  <input type="file" id="import-file" accept="application/json" style="display:none">
+
+  <!-- TOAST -->
+  <div id="toast" class="hidden">
+    <span id="toast-msg"></span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
