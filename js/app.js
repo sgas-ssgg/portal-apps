@@ -71,7 +71,7 @@ function saveConfig(key, value) {
 }
 
 /* ─── SPLASH ─── */
-var CIRC = 2 * Math.PI * 140;
+var CIRC = 2 * Math.PI * 190;
 var _rfg = qs('#ring-fg');
 _rfg.style.strokeDasharray  = CIRC;
 _rfg.style.strokeDashoffset = CIRC;
