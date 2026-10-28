@@ -321,7 +321,6 @@ body {
   padding: .75rem;
   position: relative;
   display: flex; flex-direction: column;
-  aspect-ratio: 1 / 1;
   overflow: hidden;
   transition: border-color .2s, transform .15s, box-shadow .2s;
   cursor: default;
