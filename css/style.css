@@ -319,7 +319,7 @@ body {
 /* ── TARJETA ── */
 .app-card {
   background: linear-gradient(145deg, #1c3050, #152540);
-  border: 1px solid rgba(74,158,190,.28);
+  border: 1px solid rgba(74,158,190,.65);
   border-radius: 10px;
   padding: .75rem;
   position: relative;
