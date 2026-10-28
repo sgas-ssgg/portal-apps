@@ -318,7 +318,7 @@ body {
 
 /* ── TARJETA ── */
 .app-card {
-  background: linear-gradient(145deg, #1c3050, #152540);
+  background: #1c3050;
   border: 1px solid rgba(74,158,190,.65);
   border-radius: 10px;
   padding: .75rem;
@@ -327,6 +327,12 @@ body {
   overflow: hidden;
   transition: border-color .2s, transform .15s, box-shadow .2s;
   cursor: default;
+}
+.app-card:hover {
+  background: #1e3a5f;
+  border-color: rgba(251,191,36,.55);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.4), 0 0 0 1px rgba(251,191,36,.1);
 }
 .app-card:hover {
   border-color: rgba(251,191,36,.45);
