@@ -309,8 +309,17 @@ body {
 }
 .apps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-  gap: .55rem;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: .5rem;
+}
+@media (min-width: 600px) {
+  .apps-grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: .55rem; }
+}
+@media (min-width: 1024px) {
+  .apps-grid { grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: .6rem; }
+}
+@media (min-width: 1440px) {
+  .apps-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: .65rem; }
 }
 
 /* ── TARJETA ── */
