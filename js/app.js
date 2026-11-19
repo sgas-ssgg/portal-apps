@@ -38,11 +38,27 @@ function apiFetch(path, opts) {
   });
 }
 
+/* Reintenta hasta maxRetries veces con delay creciente */
+function apiFetchWithRetry(path, opts, maxRetries, delay) {
+  maxRetries = maxRetries || 8;
+  delay = delay || 4000;
+  return apiFetch(path, opts).catch(function(err) {
+    if (maxRetries <= 0) throw err;
+    return new Promise(function(resolve) { setTimeout(resolve, delay); })
+      .then(function() { return apiFetchWithRetry(path, opts, maxRetries - 1, delay); });
+  });
+}
+
 function loadApps() {
   showLoading(true);
-  return apiFetch('/api/apps')
-    .then(function(data) { apps = data || []; })
-    .catch(function() { apps = []; showToast('Sin conexión al servidor', true); })
+  showConnecting(true);
+  return apiFetchWithRetry('/api/apps', null, 8, 5000)
+    .then(function(data) { apps = data || []; showConnecting(false); })
+    .catch(function() {
+      apps = [];
+      showConnecting(false);
+      showToast('No se pudo conectar al servidor. Recarga la página.', true);
+    })
     .finally(function() { showLoading(false); render(); });
 }
 
@@ -389,6 +405,11 @@ qs('#import-file').addEventListener('change', function(e) {
 function showLoading(show) {
   qs('#loading').classList.toggle('hidden', !show);
   qs('#grid').style.display = show ? 'none' : '';
+}
+
+function showConnecting(show) {
+  var el = qs('#connecting-msg');
+  if (el) el.style.display = show ? 'flex' : 'none';
 }
 var _tt;
 function showToast(msg, isErr) {
