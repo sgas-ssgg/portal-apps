@@ -266,12 +266,11 @@ function openModal(id) {
   editingId = id || null;
   var app = id ? apps.find(function(x) { return x.id === id; }) : null;
   qs('#modal-title').textContent = app ? 'EDITAR APLICACION' : 'AGREGAR APLICACION';
-  qs('#f-icon').value  = app ? (app.icon || '\ud83d\udda5\ufe0f') : '\ud83d\udda5\ufe0f';
   qs('#f-name').value  = app ? (app.name || '') : '';
   qs('#f-url').value   = app ? (app.url  || '') : '';
   qs('#f-cat').value   = app ? (app.category || '') : '';
   qs('#f-desc').value  = app ? (app.description || '') : '';
-  buildPicker(); hideErr();
+  hideErr();
   qs('#modal-overlay').classList.remove('hidden');
   setTimeout(function() { qs('#f-name').focus(); }, 60);
 }
@@ -280,7 +279,6 @@ window.openModal = openModal;
 function closeModal() {
   qs('#modal-overlay').classList.add('hidden');
   qs('#app-form').reset();
-  qs('#f-icon').value = '\ud83d\udda5\ufe0f';
   hideErr(); editingId = null;
 }
 window.closeModal = closeModal;
@@ -299,7 +297,7 @@ function hideErr() { qs('#form-error').classList.add('hidden'); }
 
 qs('#app-form').addEventListener('submit', function(e) {
   e.preventDefault(); hideErr();
-  var icon = qs('#f-icon').value.trim() || '\ud83d\udda5\ufe0f';
+  var icon = '\ud83d\udda5\ufe0f';
   var name = qs('#f-name').value.trim();
   var url  = qs('#f-url').value.trim();
   var cat  = qs('#f-cat').value.trim();
