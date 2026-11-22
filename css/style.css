@@ -465,7 +465,7 @@ body {
 #modal-title {
   font-family: 'Rajdhani', sans-serif;
   font-size: .88rem; font-weight: 700;
-  letter-spacing: .14em; color: #ddf0ff;
+  letter-spacing: .14em; color: #ffffff;
 }
 .modal-close {
   background: none; border: none; cursor: pointer;
@@ -478,18 +478,18 @@ body {
 .form-group { display: flex; flex-direction: column; gap: .36rem; }
 .form-group label {
   font-size: .6rem; font-weight: 600;
-  letter-spacing: .14em; text-transform: uppercase; color: #2a6080;
+  letter-spacing: .14em; text-transform: uppercase; color: #ffffff;
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
 .mi {
   border-radius: .62rem; border: 1px solid rgba(90,160,220,.25);
-  background: rgba(8,20,40,.9); padding: .55rem .78rem;
-  font-size: .8rem; color: #ddf0ff; outline: none;
+  background: #d0dae8; padding: .55rem .78rem;
+  font-size: .8rem; color: #111827; outline: none;
   transition: border-color .15s, box-shadow .15s;
   font-family: 'Inter', sans-serif; width: 100%;
 }
-.mi:focus { border-color: rgba(251,191,36,.55); box-shadow: 0 0 0 2px rgba(251,191,36,.1); }
-.mi::placeholder { color: #1e4060; }
+.mi:focus { border-color: rgba(251,191,36,.7); box-shadow: 0 0 0 2px rgba(251,191,36,.15); background: #e8eef5; }
+.mi::placeholder { color: #6b7280; }
 
 .icon-row { display: flex; align-items: flex-start; gap: .5rem; }
 .icon-input { width: 2.8rem !important; text-align: center; font-size: 1.15rem; padding: .36rem; flex-shrink: 0; }
